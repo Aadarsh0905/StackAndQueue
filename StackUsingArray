@@ -1,0 +1,72 @@
+import java.util.*;
+
+public class StackUsingArray {
+    public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        System.out.println("Enter the number of elements: ");
+        int n=in.nextInt();
+        int[] arr=new int[n];
+        Top top=new Top();
+        while(true){
+            System.out.println("1. Push  2. Pop  3. Top  4. Size  5.Exiting");
+            System.out.println("Enter your choice: ");
+            int ch=in.nextInt();
+            switch(ch){
+                case 1:
+                    System.out.println("Enter the element to push: ");
+                    int x=in.nextInt();
+                    push(x,n,arr,top);
+                    break;
+                case 2:
+                    pop(arr,top);
+                    break;
+                case 3:
+                    top(arr,top);
+                    break;
+                case 4:
+                    size(arr,top);
+                    break;
+                case 5:
+                    System.out.println("Exiting");
+                    System.exit(1);
+                default:
+                    System.out.println("Invalid choice");
+                    break;
+            }
+        }
+    }
+    static class Top{
+        int val=-1;
+    }
+    public static void push(int x,int n,int[] s,Top top){
+        if(top.val>=n-1){
+            System.out.println("The stack is full");
+            return;
+        }
+        top.val++;
+        s[top.val]=x;
+        System.out.println("Pushed Successfully");
+    }
+    public static void pop(int[] s,Top top){
+        if(top.val==-1){
+            System.out.println("Stack is empty");
+            return;
+        }
+        int v=s[top.val];
+        top.val--;
+        System.out.println("The popped element is: "+v);
+        System.out.println("Popped Successfully");
+    }
+    public static void top(int[] s,Top top){
+        if(top.val==-1){
+            System.out.println("Stack has no element");
+            return;
+        }
+        System.out.println("The element at the top of the stack: "+s[top.val]);
+    }
+    public static void size(int[] s,Top top){
+        System.out.println("The size of the stack is: "+s[top.val+1]);
+    }
+}
+
+
