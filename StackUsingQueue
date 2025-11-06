@@ -1,0 +1,44 @@
+import java.util.*;
+public class StackUsingQueue {
+    public static void main(String[] args) {
+        Queue<Integer> q=new LinkedList<>();
+        Scanner in=new Scanner(System.in);
+        push(q,in);
+        push(q,in);
+        push(q,in);
+        push(q,in);
+        push(q,in);
+        push(q,in);
+        pop(q);
+        top(q);
+    }
+    static void push(Queue q,Scanner in){
+        System.out.println("Enter the element to push: ");
+        int x=in.nextInt();
+        q.add(x);
+    }
+    static void pop(Queue q){
+        if(q.isEmpty()){
+            System.out.println("Stack is empty");
+            return;
+        }
+        int size=q.size();
+        for(int i=0;i<size-1;i++){
+            q.add(q.remove());
+        }
+        System.out.println("The popped element is: "+q.remove());
+        System.out.println("Popped successfully!!");
+    }
+    public static void top(Queue q){
+        if(q.isEmpty()){
+            System.out.println("Stack is empty");
+            return;
+        }
+        int size=q.size();
+        for(int i=0;i<size-1;i++){
+            q.add(q.remove());
+        }
+        System.out.println(q.peek()+" is the top element of the queue");
+        q.add(q.remove());
+    }
+}
