@@ -1,0 +1,36 @@
+import java.util.*;
+public class S3 {
+    public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        LinkedList<Integer>ll=new LinkedList<>();
+        while(true){
+            System.out.println("Choose from the given below option!!");
+            System.out.println("1. Push  2. Pop  3.Peek  4. Exit");
+            System.out.println("Enter your choice: ");
+            int ch=in.nextInt();
+            switch(ch){
+                case 1:
+                    System.out.println("Enter the element to enter: ");
+                    int x=in.nextInt();
+                    ll.push(x);
+                    System.out.println("Pushed successfully");
+                    break;
+
+                case 2:
+                    System.out.println("Popped element: "+ll.pop());
+                    break;
+
+                case 3:
+                    System.out.println("The element at the top of the stack is: "+ll.peek());
+                    break;
+
+                case 4:
+                    System.exit(0);
+
+                default:
+                    System.out.println("!!Invalid choice!!");
+                    break;
+            }
+        }
+    }
+}
