@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class JumpGameVI {
+    public static int maxResult(int[] nums, int k) {
+        int n = nums.length;
+        int[] dp = new int[n];
+        dp[0] = nums[0];
+
+        Deque<Integer> dq = new LinkedList<>();
+        dq.offer(0);
+
+        for (int i = 1; i < n; i++) {
+
+            // Remove indices out of window
+            while (!dq.isEmpty() && dq.peekFirst() < i - k) {
+                dq.pollFirst();
+            }
+
+            dp[i] = nums[i] + dp[dq.peekFirst()];
+
+            // Maintain decreasing deque
+            while (!dq.isEmpty() && dp[dq.peekLast()] < dp[i]) {
+                dq.pollLast();
+            }
+
+            dq.offerLast(i);
+        }
+
+        return dp[n - 1];
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1,-1,-2,4,-7,3};
+        int k = 2;
+
+        System.out.println(maxResult(nums, k));
+    }
+}
